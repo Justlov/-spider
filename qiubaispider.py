@@ -1,6 +1,5 @@
 # coding = utf-8
 import json
-
 import requests
 from lxml import etree
 
@@ -11,7 +10,7 @@ class QiuBai():
             "User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36",
             "Referer" : "https://www.qiushibaike.com/text/"
         }
-        pass
+        
 
     def get_url_list(self):
         urllist = ["https://www.qiushibaike.com/text/page/{}" .format(i)for i in range(1,14)]
@@ -52,7 +51,6 @@ class QiuBai():
         print('保存成功')
 
 
-
     def run(self):
         # 1 获取url列表
         urllist = self.get_url_list()
@@ -61,13 +59,11 @@ class QiuBai():
         for url in urllist:
             html_str = self.get_html_str(url)
             # 解析html_str
-
             content_list = self.parser_html(html_str)
+			 # 保存解析结果
             self.saveto(content_list)
 
-
-
-        # 保存解析结果
+     
 
 if __name__ == '__main__':
     qiubai = QiuBai()
